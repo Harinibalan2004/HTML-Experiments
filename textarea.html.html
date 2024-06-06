@@ -1,0 +1,44 @@
+<!DOCTYPE html> 
+<html>
+    <head> 
+         <title>Call API</title>
+          </head>
+           <body>
+             <h1>Call API</h1>
+              <form>
+                 <label for="url">URL:</label><br>
+                  <textarea id="url" name="url" rows="1" cols="50"></textarea><br><br> 
+                  <label for="postData">POST Data:</label><br> 
+                  <textarea id="postData" name="postData" rows="10" cols="50"></textarea><br><br>
+                   <label for="responseData">Response Data:</label><br> 
+                   <textarea id="responseData" name="responseData" rows="10" cols="50" readonly></textarea><br><br>
+                    <button type="button" onclick="callApi('GET')">GET</button>
+                     <button type="button" onclick="callApi('POST')">POST</button> 
+                     </form> 
+                     <script> 
+                     function callApi(method) {
+                         const url = document.getElementById('url').value;
+                          const postData = document.getElementById('postData').value; 
+                          const responseData = document.getElementById('responsedata');
+                          let options = {
+                            method: method,
+                            Headers: {
+                                'content-Type': 'application/json'
+                            }
+                          };
+                          if (method === 'POST'){
+                            <options.body = postData;
+                          }
+                          fetch(url, options)
+                          .then(reesponse => response.json())
+                          .then(data => {
+                            responseData.value = json.stringify(data, null, 2);
+                          })
+                          .catch(error => {
+                            responseData.value = 'Error: ' + error.message;
+                          })
+                        }
+                        </script>
+           </body>
+</html>
+    
